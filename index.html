@@ -3,297 +3,536 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SJKT DLP Year 5 Syllabus Hub - Bukit Mertajam </title>
+    <title>SJKT DLP Year 5 Syllabus Hub - Bukit Mertajam</title>
     <style>
-        /* --- Basic CSS Styling --- */
+        /* --- General Body & Layout Styling --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #A31621; /* Light blue background */
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #A31621; /* Dark blue/grey */
-            color: white;
-            padding: 1.5rem 0;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        header p {
-            margin-top: 0.5rem;
-            font-size: 1.1rem;
-        }
-        nav {
-            background-color: white; /* Slightly lighter dark blue/grey */
-            color: #A31621;
-            padding: 0.8rem 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        nav a {
-            color: #A31621;
-            text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-        nav a:hover {
-            background-color: #333; /* Teal hover effect */
+            background-color: #f5f7fa; /* Lighter, professional background */
+            color: #333; /* Standard dark grey for body text */
+            line-height: 1.7; /* Improved readability */
+            font-size: 16px;
         }
         .container {
             width: 90%;
-            max-width: 960px;
-            margin: 20px auto;
+            max-width: 1000px; /* Slightly wider container */
+            margin: 30px auto; /* More vertical margin */
             overflow: hidden;
-            padding: 0 10px;
+            padding: 0 15px; /* More horizontal padding */
         }
         section {
             background-color: white;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px; /* Increased padding */
+            margin-bottom: 30px; /* More vertical spacing between sections */
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Softer, deeper shadow */
+            border: 1px solid #e0e0e0; /* Subtle border */
+            opacity: 0; /* Hidden initially for scroll animation */
+            transform: translateY(20px); /* Start slightly below for animation */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition for non-animated state */
         }
-        h1,{
-            border- white  /* Blue headings */
+
+        /* Class to apply when element is in view */
+        section.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Animations --- */
+        @keyframes headerFadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* --- Header Styling --- */
+        header {
+            background-color: #A31621; /* Primary Red */
+            color: white;
+            padding: 2rem 0; /* More padding */
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25); /* Stronger shadow for header */
+            position: relative; /* For potential future elements */
+            z-index: 10; /* Ensure it stays on top */
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px; /* Increased gap */
+            padding: 0 25px;
+            flex-wrap: wrap; /* Allows wrapping on small screens */
+            text-align: left; /* Default text alignment within content div */
+            opacity: 0; /* Hidden initially for animation */
+            animation: headerFadeInDown 1s ease-out forwards; /* Apply header animation */
+        }
+        .site-logo {
+            max-height: 90px; /* Slightly larger logo */
+            width: auto;
+            border-radius: 50%; /* Ensure logo is round if applicable */
+            border: 0px solid (255,255,255,0.8); /* White border around logo */
+            box-shadow: 0 0 0px (0,0,0,0.3); /* Shadow for logo */
+            animation: pulse 2s infinite ease-in-out; /* Apply pulse animation */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem; /* Larger heading */
+            font-weight: 700; /* Bolder */
+            letter-spacing: 0.5px;
+        }
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.2rem; /* Larger subheading */
+            opacity: 0.9; /* Slightly transparent */
+        }
+
+        /* --- Navigation Styling --- */
+        nav {
+            background-color: white; /* White navigation bar */
+            color: #A31621;
+            padding: 0.8rem 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky; /* Sticky navigation */
+            top: 0;
+            z-index: 9; /* Below header */
+            border-bottom: 1px solid #e0e0e0;
+        }
+        nav a {
+            color: #A31621; /* Red links */
+            text-decoration: none;
+            padding: 1rem 1.8rem; /* More padding */
+            display: inline-block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 600; /* Bolder links */
+            font-size: 1.05rem;
+        }
+        nav a:hover {
+            background-color: #A31621; /* Red background on hover */
+            color: white; /* White text on hover */
+            border-radius: 6px; /* Slightly rounded hover effect */
+        }
+
+        /* --- Headings within Sections --- */
+        h1 {
+            color: white; /* Primary Red for all main headings */
             margin-top: 0;
+            font-weight: 700;
+        }
+        h2, h3, h4 {
+            color: #A31621; /* Primary Red for all main headings */
+            margin-top: 0;
+            font-weight: 700;
         }
         h2 {
-        }
-        h2, {
-            color: #A31621; /* Blue headings */
-            margin-top: 0;
-        }
-        h3 {
+            font-size: 2.2rem; /* Larger H2 */
+            border-bottom: 2px solid #f0f0f0; /* Lighter border */
+            padding-bottom: 15px; /* More padding */
+            margin-bottom: 25px; /* More margin */
         }
         h3 {
-            color: #A31621; /* Blue headings */
-            margin-top: 0;
+            font-size: 1.7rem; /* Larger H3 */
+            margin-bottom: 15px;
         }
-        h2 {
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+        h4 {
+            font-size: 1.3rem; /* Larger H4 */
+            margin-bottom: 10px;
         }
+
+        /* --- List Styling --- */
         ul {
             list-style: none;
             padding: 0;
         }
         ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px; /* More spacing */
         }
         ul li a {
-            color: #333; /* Link blue */
+            color: #34495e; /* Darker grey for content links */
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            transition: color 0.2s ease;
         }
         ul li a:hover {
+            color: #A31621; /* Red on hover */
             text-decoration: underline;
         }
+
+        /* --- Note Content Styling --- */
         .note-content {
-            background-color: #f9f9f9;
-            border-left: 5px solid #A31621; /* Teal border */
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 5px;
+            background-color: #fdfdfd; /* Very light background */
+            border-left: 6px solid #A31621; /* Stronger red border */
+            padding: 20px; /* More padding */
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05); /* Inner shadow */
             display: none; /* Hidden by default */
         }
-        .note-content h4 {
-            color: #A31621;
-            margin-top: 0;
+        .note-content p {
+            margin-bottom: 1em; /* Consistent paragraph spacing */
+            color: #555;
+        }
+        .note-content strong {
+            color: #A31621; /* Highlight strong text */
+        }
+        .note-content small {
+            font-size: 0.85em; /* Slightly smaller small text */
+            color: #777;
+        }
+        .note-image, video {
+            max-width: 95%; /* Make images/videos fill more width */
+            height: auto;
+            display: block;
+            margin: 25px auto; /* More margin */
+            border: 1px solid #A31621; /* Lighter border */
+            border-radius: 8px; /* More rounded */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Clearer shadow */
+        }
+        audio {
+            width: 100%; /* Full width audio player */
+            margin-top: 15px;
+            margin-bottom: 15px;
         }
 
-        /* Quiz Specific Styles */
+        /* --- Quiz Specific Styles --- */
         .quiz-intro-text {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #e0f2f7;
-            border-left: 5px solid white;
-            border-radius: 5px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #fff0f0; /* Very light red background */
+            border-left: 6px solid #A31621;
+            border-radius: 8px;
+            color: #555;
         }
-
         .quiz-subject-selection {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px; /* More spacing */
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            background-color: white; /* Add this line */
-            padding: 20px; /* Optional: Add some padding to make it look nicer */
-            border-radius: 10px; /* Optional: Match the border-radius of other sections */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Optional: Give it a subtle shadow */
+            gap: 20px; /* More gap */
+            background-color: #fcfcfc; /* Light background for selection area */
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
         }
         .quiz-subject-selection button {
-            background-color:#A31621; button */
-            color: #A31621;
-            padding: 12px 25px;
+            background-color: #A31621; /* Primary red button */
+            color: white;
+            padding: 14px 30px; /* Larger padding */
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            display: inline-block; /* Make them sit side-by-side */
-            min-width: 140px; /* Ensure consistent width */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-size: 1.15rem; /* Slightly larger font */
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-block;
+            min-width: 160px; /* Consistent width */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Clearer shadow */
         }
         .quiz-subject-selection button:hover {
-            background-color:  #EDF4F2; /* Darker blue on hover */
-            transform: translateY(-2px); /* Slight lift effect */
+            background-color: #7a1118; /* Darker red on hover */
+            transform: translateY(-3px); /* More pronounced lift */
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
         .quiz-subject-selection button:active {
-            transform:
-            :color white;translateY(0); /* Press effect */
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         /* Timer Styles */
         .quiz-timer-container {
             text-align: center;
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #fff3e0; /* Light orange background */
-            border: 1px solid #ffcc80;
-            border-radius: 8px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff8e1; /* Soft yellow background */
+            border: 1px solid #ffebcd;
+            border-radius: 10px;
             font-weight: bold;
-            color: #e65100; /* Dark orange text */
-            display: none; /* Hidden by default */
+            color: #d68910; /* Darker yellow text */
+            display: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        #timer-display {font-size: 2.5em;
+        #timer-display {
+            font-size: 3em; /* Larger timer font */
             margin-bottom: 10px;
-            font-family: 'monospace'; /* Monospace for consistent width numbers */
+            font-family: 'monospace';
+            letter-spacing: 1px;
         }
         #current-time-taken, #best-time-taken {
-            font-size: 1.1em;
+            font-size: 1.2em;
             margin-top: 5px;
         }
         #best-time-taken {
-            color: #007bff; /* Blue for best time display */
+            color: #2196F3; /* Blue for best time display */
             font-weight: bold;
-            padding-top: 8px;
+            padding-top: 10px;
             border-top: 1px dashed #ffcc80;
-            margin-top: 10px;
-            display: block; /* Ensure it's always block by default */
+            margin-top: 15px;
+            display: block;
         }
         .quiz-timer-container.active {
-            display: block; /* Show when active */
+            display: block;
         }
 
         .subject-quiz-container {
-            display: none; /* Hidden by default */
+            display: none;
+            background-color: #fcfcfc;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
         }
 
         .quiz-question {
-            background-color: #ecf0f1; /* Light grey background */
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            border: 1px solid #dcdcdc;
+            font-size: 1.4rem; /* Larger question font */
+            margin-bottom: 25px;
+            color: #34495e; /* Dark blue-grey for questions */
+            font-weight: 600;
+            line-height: 1.5;
         }
         .quiz-options label {
             display: block;
-            margin-bottom: 10px;
+            background-color: #f0f8ff; /* Light blue background for options */
+            padding: 15px 20px; /* More padding */
+            margin-bottom: 12px;
+            border: 1px solid #d0e0f0;
+            border-radius: 8px; /* More rounded */
             cursor: pointer;
-            padding: 8px;
-            border-radius: 5px;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            font-size: 1.05rem;
+            color: #444;
         }
         .quiz-options label:hover {
-            background-color: #dfe6e9;
+            background-color: #e0f0ff;
+            border-color: #a0c0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         .quiz-options input[type="radio"] {
-            margin-right: 10px;
-            transform: scale(1.2); /* Make radio buttons slightly larger */
+            margin-right: 12px; /* More spacing */
+            transform: scale(1.3); /* Slightly larger radio buttons */
+            vertical-align: middle; /* Align with text */
         }
-        #quiz-submit-button { /* Specific ID for the submit button */
-            background-color: #27ae60; /* Green submit button */
+        /* Style for selected option */
+        .quiz-options label.selected {
+            background-color: #c9e6ff;
+            border-color: #80c2ff;
+            box-shadow: 0 0 10px rgba(0,123,255,0.2);
+        }
+        /* Style for correct answer feedback */
+        .quiz-options label.correct {
+            background-color: #d4edda; /* Light green */
+            border-color: #28a745; /* Darker green */
+            color: #155724;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(40,167,69,0.2);
+        }
+        /* Style for incorrect answer feedback */
+        .quiz-options label.incorrect {
+            background-color: #f8d7da; /* Light red */
+            border-color: #dc3545; /* Darker red */
+            color: #721c24;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(220,53,69,0.2);
+        }
+
+        #quiz-submit-button, .quiz-button { /* Combined for consistency */
+            background-color: #A31621; /* Red button */
             color: white;
-            padding: 12px 25px;
+            padding: 14px 30px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease;
+            font-size: 1.15rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
             display: block;
-            margin-top: 20px;
-            width: fit-content; /* Adjust width to content */
-            margin-left: auto; /* Center button */
-            margin-right: auto; /* Center button */
+            margin-top: 30px; /* More margin */
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
-        #quiz-submit-button:hover {
-            background-color: #219d57;
+        #quiz-submit-button:hover, .quiz-button:hover {
+            background-color: #7a1118;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
+        #quiz-submit-button:active, .quiz-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
         #quiz-results {
-            margin-top: 30px;
-            padding: 20px;
+            margin-top: 40px;
+            padding: 30px;
             background-color: #e8f5e9; /* Light green for results */
             border: 1px solid #c8e6c9;
-            border-radius: 8px;
+            border-radius: 12px;
             font-weight: bold;
             color: #2e7d32;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            display: none; /* Hidden by default */
+            animation: popIn 0.5s ease-out forwards; /* Apply pop-in animation */
+        }
+        #quiz-results h3 {
+            font-size: 2rem;
+            color: #1b5e20;
+            margin-bottom: 15px;
+            border-bottom: none; /* Remove border from H3 in results */
+            padding-bottom: 0;
         }
         #quiz-results p {
             margin-bottom: 10px;
+            font-size: 1.15rem;
         }
-        #quiz-results h3 {
-            color: #1b5e20;
-            margin-top: 15px;
-            border-top: 1px solid #a5d6a7;
+        #grade-message {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-top: 20px;
             padding-top: 15px;
+            border-top: 1px dashed #a5d6a7;
         }
-
-        /* Try Again Button Style */
         #try-again-button {
-            background-color: #007bff; /* Blue */
+            background-color: #3498db; /* Blue for try again */
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1rem;
-            margin-top: 15px;
-            display: block; /* Make it a block element */
-            margin-left: auto; /* Center horizontally */
-            margin-right: auto; /* Center horizontally */
-            transition: background-color 0.3s ease;
-            display: none; /* Hidden by default */
+            font-size: 1.1rem;
+            margin-top: 25px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
         #try-again-button:hover {
-            background-color: #0056b3;
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
 
+        /* --- Specific Donation Page Styles (copied from donate.html) --- */
+        .donation-info { /* This class is currently not used but kept for reference */
+            background-color: #fefefe;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .donation-methods {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .method-card {
+            background-color: #f8f8f8;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+            flex: 1;
+            min-width: 280px; /* Minimum width for cards */
+            max-width: 45%; /* Max width for two columns */
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        .method-card h4 {
+            color: #A31621;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .method-card p {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+            color: #444;
+        }
+        .qr-code {
+            max-width: 180px; /* Adjust size as needed */
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin: 15px auto 0;
+            display: block; /* Center the image */
+        }
+        .contact-info {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #666;
+        }
+        .contact-info a {
+            color: #A31621;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Footer Styling --- */
         footer {
             text-align: center;
-            padding: 25px;
-            background-color: white; /* Dark blue/grey */
+            padding: 30px;
+            background-color: #A31621; /* Red footer */
             color: white;
-            margin-top: 30px;
-            border-radius: 10px;
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+            margin-top: 40px;
+            border-radius: 12px;
+            box-shadow: 0 -6px 15px rgba(0,0,0,0.25);
+            font-size: 0.95rem;
         }
     </style>
 </head>
 <body>
     <header>
-    <div class="header-content">
-        <img src="1000000621-removebg-preview.png" alt="SJKT DLP Year 5 Syllabus Hub Logo" class="site-logo">
-        <div>
-            <h1>St.John Bosco study Hub</h1>
-            <p>Enhancing Learning in Indian Students</p>
+        <div class="header-content">
+            <img src="1000000621-removebg-preview.png" alt="SJKT DLP Year 5 Syllabus Hub Logo" class="note-image">
+            <div>
+                <h1>St.John Bosco Study Hub</h1>
+                <p>Enhancing Learning for Indian Students</p>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <nav>
         <a href="#home">Home</a>
         <a href="#notes">Notes</a>
         <a href="#quiz">Quiz</a>
-        <a href="donate.html">Donate</a>
+        <a href="#donate">Donate</a>
     </nav>
 
     <div class="container">
@@ -302,36 +541,43 @@
             <p>This platform is tailored for **Year 5 students** in SJKT DLP (Dual Language Programme) schools in Malaysia, following the KSSR Semakan syllabus. It provides easy access to study notes and interactive quizzes for **Mathematics, Science, Malay Language (SJK), Tamil Language, History, and English Language**.</p>
             <p>Explore the subjects, revise your topics, and challenge yourself with our quizzes!</p>
             <video controls poster="1000000621-removebg-preview.png" width="640" height="360">
-    <source src="shotcut-20250703-221756_1_1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-<p style="text-align: center; font-style: italic; font-size: 0.9em; margin-top: 
-                </section>
+                <source src="shotcut-20250703-221756_1_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p style="text-align: center; font-style: italic; font-size: 0.9em; margin-top: 10px; color: #666;">Watch our introductory video!</p>
+        </section>
 
         <section id="notes">
-            <h2>Study Notes: KSSR Semakan Year 5 </:colour white;h2>
+            <h2>Study Notes: KSSR Semakan Year 5</h2>
             <p>Click on a topic to expand and read the notes.</p>
 
             <h3>Mathematics - DLP Year 5</h3>
             <ul>
                 <li><a href="#" onclick="showNotes('math-whole-numbers'); return false;">Topic 1: Whole Numbers and Operations</a>
                     <div id="math-whole-numbers" class="note-content">
-                        <h4> Recognize and Write Numbers</h4>
-<p><audio controls>
-  <source src="luvvoice.com-20250705-zjnDMK.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.</p>
-</audio>
-    
-<p style="text-align: center; font-style: italic; font-size: 0.9em; margin-top: 5px; color: #666;">Learn about place value and large numbers!</p><strong>Number Value</strong> <small>(1. 1.1) </small></p> 
-
-<strong>1.</strong> A local bookstore received a shipment of new books across four popular genres.</p><img <img src="unnamed.png" alt="maths concept" class="note-image"><p> How Many Science Fiction Books Did the Book Store Receive? The answer is 550 980 </p>
-<p>You Can Read The Number 550 980 as<strong> Five Hundred Fifty Thousand Nine Hundred Eighty.</p>
-<p style="font-style: italic; small; color: #555;">(Say the number in the ‘thousands’group first.Then say the next three numbers.)</p>        
-
-<p><strong>2.</strong></strong>How many shipment of Non-Fiction books did the bookstore receive?
- We can break down the number </small><strong>485 100 </strong>like this:</p><img <img src="unnamed2.png" alt="maths concept2" class="note-image"></p><p>Read the number 485 100 as: <strong>Four hundred eighty-five thousand one hundred.</strong></p><p><strong>3.</strong>How many shipment of Fiction & Mystery books did the bookstore receive?
-Say the numbers <strong>620 540</strong> and <strong>715 320</strong> out loud.</p><p><strong>4.</strong>Now let us write the numbers in words.
-Look for the numbers in the <strong>thousands</strong> group first.</p> <p>Write the number <strong>738,152</strong> in words.</p><p></><strong>Place Value </strong> Every digit in a Numbers has specific place value. For example, in 3,478,125, the '7' is in the Hundred Thousands place.</p>   <p><strong>Digit Value:</strong> Every digit in a number has a specific place value. For example, in 3,478,125, the '7' is in the Hundred Thousands place.</p>
+                        <h4>Recognize and Write Numbers</h4>
+                        <p><audio controls>
+                            <source src="luvvoice.com-20250705-zjnDMK.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio></p>
+                        <p style="text-align: center; font-style: italic; font-size: 0.9em; margin-top: 5px; color: #666;">Learn about place value and large numbers!</p>
+                        <strong>Number Value</strong> <small>(1. 1.1) </small>
+                        <p><strong>1.</strong> A local bookstore received a shipment of new books across four popular genres.</p>
+                        <img src="unnamed.png" alt="maths concept" class="note-image">
+                        <p>How Many Science Fiction Books Did the Book Store Receive? The answer is 550 980 </p>
+                        <p>You Can Read The Number 550 980 as<strong> Five Hundred Fifty Thousand Nine Hundred Eighty.</strong></p>
+                        <p style="font-style: italic; font-size: 0.9em; color: #555;">(Say the number in the ‘thousands’group first.Then say the next three numbers.)</p>
+                        <p><strong>2.</strong>How many shipment of Non-Fiction books did the bookstore receive?
+                        We can break down the number <strong>485 100 </strong>like this:</p>
+                        <img src="unnamed2.png" alt="maths concept2" class="note-image">
+                        <p>Read the number 485 100 as: <strong>Four hundred eighty-five thousand one hundred.</strong></p>
+                        <p><strong>3.</strong>How many shipment of Fiction & Mystery books did the bookstore receive?
+                        Say the numbers <strong>620 540</strong> and <strong>715 320</strong> out loud.</p>
+                        <p><strong>4.</strong>Now let us write the numbers in words.
+                        Look for the numbers in the <strong>thousands</strong> group first.</p>
+                        <p>Write the number <strong>738,152</strong> in words.</p>
+                        <p><strong>Place Value:</strong> Every digit in a Number has specific place value. For example, in 3,478,125, the '7' is in the Hundred Thousands place.</p>
+                        <p><strong>Digit Value:</strong> Every digit in a number has a specific place value. For example, in 3,478,125, the '7' is in the Hundred Thousands place.</p>
                         <p><strong>Rounding Off:</strong> Simplifying numbers to a certain place value. e.g., 4,567,890 rounded to the nearest ten thousand is 4,570,000.</p>
                         <p><strong>Addition & Subtraction:</strong> Advanced problems involving large numbers and multiple steps.</p>
                         <p><strong>Multiplication & Division:</strong> Operations with multi-digit numbers, including long division.</p>
@@ -340,7 +586,7 @@ Look for the numbers in the <strong>thousands</strong> group first.</p> <p>Write
                     </div>
                 </li>
                 <li><a href="#" onclick="showNotes('math-fractions-decimals'); return false;">Topic 2: Fractions, Decimals, and Percentages</a>
-                     <div id="math-fractions-decimals" class="note-content">
+                    <div id="math-fractions-decimals" class="note-content">
                         <h4>Fractions, Decimals, and Percentages (Year 5 Content Placeholder)</h4>
                         <p><strong>Fractions:</strong> Understanding proper, improper fractions, and mixed numbers. Operations (addition, subtraction, multiplication, division) involving various types of fractions.</p>
                         <p><strong>Decimals:</strong> Place value up to thousandths. Operations (addition, subtraction, multiplication, division) involving decimals, including solving word problems.</p>
@@ -353,18 +599,18 @@ Look for the numbers in the <strong>thousands</strong> group first.</p> <p>Write
             <h3>Science - DLP Year 5</h3>
             <ul>
                 <li><a href="#" onclick="showNotes('science-microorganisms'); return false;">Topic 1: Microorganisms</a>
-    <div id="science-microorganisms" class="note-content">
-        <h4>Microorganisms: The Unseen World (Year 5 Content Placeholder)</h4>
-        <img src="p0kqyj7w.png" alt="Two bacteria cells with flagella" class="note-image">
-        <p style="text-align: center; font-style: italic; font-size: 0.9em; margin-top: 5px; color: #666;">Figure 1: Example of Bacteria</p>
-        <p>Microorganisms are tiny living things that can only be seen with a microscope. For Year 5, focus on:</p>
-        <p><strong>Types and Characteristics:</strong> Bacteria, fungi, protozoa, algae, and viruses – their basic structures and how they differ.</p>
-        <p><strong>Beneficial vs. Harmful:</strong> Examples of useful microorganisms (e.g., in food, decomposition) and harmful ones (causing diseases, food spoilage).</p>
-        <p><strong>Impact on Life:</strong> How microorganisms affect human health, agriculture, and the environment.</p>
-        <p><strong>Prevention of Diseases:</strong> Methods to prevent the spread of diseases caused by microorganisms (e.g., hygiene, vaccination, food preservation).</p>
-        <p style="font-style: italic; color: #555;">(Please replace this with actual Year 5 Science syllabus content.)</p>
-    </div>
-</li>>
+                    <div id="science-microorganisms" class="note-content">
+                        <h4>Microorganisms: The Unseen World (Year 5 Content Placeholder)</h4>
+                        <img src="p0kqyj7w.png" alt="Two bacteria cells with flagella" class="note-image">
+                        <p style="text-align: center; font-style: italic; font-size: 0.9em; margin-top: 5px; color: #666;">Figure 1: Example of Bacteria</p>
+                        <p>Microorganisms are tiny living things that can only be seen with a microscope. For Year 5, focus on:</p>
+                        <p><strong>Types and Characteristics:</strong> Bacteria, fungi, protozoa, algae, and viruses – their basic structures and how they differ.</p>
+                        <p><strong>Beneficial vs. Harmful:</strong> Examples of useful microorganisms (e.g., in food, decomposition) and harmful ones (causing diseases, food spoilage).</p>
+                        <p><strong>Impact on Life:</strong> How microorganisms affect human health, agriculture, and the environment.</p>
+                        <p><strong>Prevention of Diseases:</strong> Methods to prevent the spread of diseases caused by microorganisms (e.g., hygiene, vaccination, food preservation).</p>
+                        <p style="font-style: italic; color: #555;">(Please replace this with actual Year 5 Science syllabus content.)</p>
+                    </div>
+                </li>
                 <li><a href="#" onclick="showNotes('science-electricity'); return false;">Topic 2: Electricity</a>
                     <div id="science-electricity" class="note-content">
                         <h4>Electricity: Powering Our World (Year 5 Content Placeholder)</h4>
@@ -465,23 +711,10 @@ Look for the numbers in the <strong>thousands</strong> group first.</p> <p>Write
             <h2>Test Your Knowledge! (Year 5 Quiz)</h2>
             <div class="quiz-intro-text">
                 <p>Select a subject below to start its quiz. You can attempt quizzes for individual subjects.</p>
-                
             </div>
 
-<div class=quiz-subject-selection 
-text-align: center;
-margin-bottom: 30px;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 15px;
-background-color: #A31621; /*
-Add or change this line */
-padding: 20px; /* Recommended: Add some padding for visual appeal */
-border-radius: 10px; /* Recommended: Match other section styles */
-box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Recommended: Add a subtle shadow>
-
-               <button onclick="showQuizSubject('math-quiz')">Mathematics Quiz</button>
+            <div class="quiz-subject-selection">
+                <button onclick="showQuizSubject('math-quiz')">Mathematics Quiz</button>
                 <button onclick="showQuizSubject('science-quiz')">Science Quiz</button>
                 <button onclick="showQuizSubject('malay-quiz')">Malay Language Quiz</button>
                 <button onclick="showQuizSubject('tamil-quiz')">Tamil Language Quiz</button>
@@ -501,11 +734,10 @@ box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Recommended: Add a subtle shadow>
                     <div class="quiz-question">
                         <p>1. What is the place value of the '5' in the number 256,789?</p>
                         <div class="quiz-options">
-                            <label><input type="radio" name="math_q1" value="a"> A. Thousands</label><br>
-                            <label><input type="radio" name="math_q1" value="b"> B. Ten Thousands</label><br>
-                            <label><input type="radio" name="math_q1" value="c"> C. Hundred Thousands</label><br>
-                            <label><input type="radio" name="math_q1" value="d"> D. tens
-                            </label>
+                            <label><input type="radio" name="math_q1" value="b"> A. Ten Thousands</label><br>
+                            <label><input type="radio" name="math_q1" value="c"> B. Hundred Thousands</label><br>
+                            <label><input type="radio" name="math_q1" value="a"> C. Thousands</label><br>
+                            <label><input type="radio" name="math_q1" value="d"> D. Tens</label>
                         </div>
                     </div>
 
@@ -583,31 +815,31 @@ box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Recommended: Add a subtle shadow>
                         <div class="quiz-options">
                             <label><input type="radio" name="tamil_q2" value="a"> A. வணக்கம் (Hello)</label><br>
                             <label><input type="radio" name="tamil_q2" value="b"> B. நன்றி (Thank you)</label><br>
-                            <label><input type="radio" name="tamil_q2" value="c"> C. ஆம் (Yes)</label><br>
-                            <label><input type="radio" name="tamil_q2" value="d"> D. இல்லை (No)</label>
+                            <label><input type="radio" name="tamil_q2" value="c"> C. தயவுசெய்து (Please)</label><br>
+                            <label><input type="radio" name="tamil_q2" value="d"> D. மன்னிக்கவும் (Sorry)</label>
                         </div>
                     </div>
                 </div>
 
                 <div id="history-quiz" class="subject-quiz-container">
-                    <h3>History Quiz (வரலாற்று வினாடி வினா)</h3>
+                    <h3>History Quiz (வரலாறு வினாடி வினா)</h3>
                     <div class="quiz-question">
-                        <p>1. மலாக்கா சுல்தானகத்தை நிறுவியவர் யார்? (Who founded the Malacca Sultanate?)</p>
+                        <p>1. Which ancient kingdom in Malaysia was known for its iron production and trade, located in Kedah?</p>
                         <div class="quiz-options">
-                            <label><input type="radio" name="history_q1" value="a"> A. ராஜேந்திர சோழன் (Rajendra Chola)</label><br>
-                            <label><input type="radio" name="history_q1" value="b"> B. பரமேஸ்வரா (Parameswara)</label><br>
-                            <label><input type="radio" name="history_q1" value="c"> C. மெர்லிமௌ (Merlimau)</label><br>
-                            <label><input type="radio" name="history_q1" value="d"> D. சுல்தான் இப்ராஹிம் (Sultan Ibrahim)</label>
+                            <label><input type="radio" name="history_q1" value="a"> A. Gangga Negara</label><br>
+                            <label><input type="radio" name="history_q1" value="b"> B. Srivijaya</label><br>
+                            <label><input type="radio" name="history_q1" value="c"> C. Langkasuka</label><br>
+                            <label><input type="radio" name="history_q1" value="d"> D. Funan</label>
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <p>2. மலேசியாவில் காணப்படும் ஆரம்பகால அரசாங்கங்களில் ஒன்று எது? (Which of the following is one of the early kingdoms found in Malaysia?)</p>
+                        <p>2. Who was the founder of the Malacca Sultanate?</p>
                         <div class="quiz-options">
-                            <label><input type="radio" name="history_q2" value="a"> A. அயோத்தி (Ayutthaya)</label><br>
-                            <label><input type="radio" name="history_q2" value="b"> B. சிங்கப்பூர் (Singapore)</label><br>
-                            <label><input type="radio" name="history_q2" value="c"> C. லங்காசுகா (Langkasuka)</label><br>
-                            <label><input type="radio" name="history_q2" value="d"> D. சுக்காபுமி (Sukabumi)</label>
+                            <label><input type="radio" name="history_q2" value="a"> A. Sultan Mansur Shah</label><br>
+                            <label><input type="radio" name="history_q2" value="b"> B. Parameswara</label><br>
+                            <label><input type="radio" name="history_q2" value="c"> C. Hang Tuah</label><br>
+                            <label><input type="radio" name="history_q2" value="d"> D. Sultan Muzaffar Shah</label>
                         </div>
                     </div>
                 </div>
@@ -615,293 +847,261 @@ box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Recommended: Add a subtle shadow>
                 <div id="english-quiz" class="subject-quiz-container">
                     <h3>English Language Quiz</h3>
                     <div class="quiz-question">
-                        <p>1. Which conjunction is used to combine two independent clauses to form a compound sentence?</p>
+                        <p>1. Combine the following two simple sentences into a compound sentence using an appropriate conjunction: "She likes to read books. He prefers to watch movies."</p>
                         <div class="quiz-options">
-                            <label><input type="radio" name="english_q1" value="a"> A. Because</label><br>
-                            <label><input type="radio" name="english_q1" value="b"> B. Although</label><br>
-                            <label><input type="radio" name="english_q1" value="c"> C. And</label><br>
-                            <label><input type="radio" name="english_q1" value="d"> D. Since</label>
+                            <label><input type="radio" name="english_q1" value="a"> A. She likes to read books because he prefers to watch movies.</label><br>
+                            <label><input type="radio" name="english_q1" value="b"> B. She likes to read books, but he prefers to watch movies.</label><br>
+                            <label><input type="radio" name="english_q1" value="c"> C. Although it was raining, we still went for a walk.</label><br>
+                            <label><input type="radio" name="english_q1" value="d"> D. She likes to read books and he prefers to watch movies.</label>
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <p>2. A well-structured paragraph usually begins with a:</p>
+                        <p>2. Which of the following is a complex sentence?</p>
                         <div class="quiz-options">
-                            <label><input type="radio" name="english_q2" value="a"> A. Concluding sentence</label><br>
-                            <label><input type="radio" name="english_q2" value="b"> B. Supporting detail</label><br>
-                            <label><input type="radio" name="english_q2" value="c"> C. Topic sentence</label><br>
-                            <label><input type="radio" name="english_q2" value="d"> D. Question mark</label>
+                            <label><input type="radio" name="english_q2" value="a"> A. The dog barked loudly.</label><br>
+                            <label><input type="radio" name="english_q2" value="b"> B. I went to the market, and I bought some fruits.</label><br>
+                            <label><input type="radio" name="english_q2" value="c"> C. Although it was raining, we still went for a walk.</label><br>
+                            <label><input type="radio" name="english_q2" value="d"> D. He is a good student.</label>
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" id="quiz-submit-button" style="display: none;">Submit Quiz</button>
+                <button type="submit" id="quiz-submit-button" style="display:none;">Submit Quiz</button>
             </form>
 
-            <div id="quiz-results"></div>
-            <button id="try-again-button" style="display: none;">Try Again!</button>
+            <div id="quiz-results" style="display:none;">
+                <h3>Your Results!</h3>
+                <p>Score: <span id="current-score"></span> / <span id="total-questions"></span></p>
+                <p>Time Taken: <span id="final-time-taken"></span></p>
+                <p id="grade-message"></p>
+                <button id="try-again-button">Try Again</button>
+            </div>
         </section>
-    </div>
+
+        <section id="donate">
+            <h2>Support Our Mission</h2>
+            <p>St.John Bosco Study Hub is committed to providing free, high-quality educational resources for Year 5 SJKT DLP students. Our goal is to ensure every student has access to the tools they need to succeed in Mathematics, Science, and Languages.</p>
+            <p>Maintaining this platform, creating new content, and ensuring it remains accessible to all requires continuous effort and resources. Your generous donations help us cover operational costs, improve our features, and expand our offerings.</p>
+            <p>Every contribution, no matter how small, makes a significant difference in empowering the next generation of learners.</p>
+
+            <div class="donation-methods">
+                <div class="method-card">
+                    <h4>Direct Bank Transfer</h4>
+                    <p>You can make a direct bank transfer to our account. Please include your name if you wish to be acknowledged.</p>
+                    <p><strong>Bank Name:</strong> Maybank</p>
+                    <p><strong>Account Name:</strong> St.John Bosco Study Hub</p>
+                    <p><strong>Account Number:</strong> 5571 7041 5732</p>
+                    <p><strong>Swift Code:</strong> MBBEMYKL (for international transfers)</p>
+                </div>
+
+                <div class="method-card">
+                    <h4>Touch 'n go QR</h4>
+                    <p>Scan the Touch 'n Go QR code below</p>
+                    <img src="1000033102.jpg" alt="Touch 'n Go QR Code" class="qr-code">
+                    
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <p>For large donations, corporate partnerships, or any inquiries, please contact us at: <a href="mailto:stjohnboscostudyhub.gmail.com">stjohnboscostudyhub.gmail.com</a></p>
+                <p>Thank you for being a part of our journey to educate and inspire!</p>
+            </div>
+        </section>
+        </div>
 
     <footer>
-        <p>&copy; 2025 SJKT DLP Syllabus Hub. All rights reserved. | Developed for students in Bukit Mertajam, Penang.</p>
+        <p>&copy; 2025 St. John Bosco Study Hub. All rights reserved. | Developed for Indian students.</p>
     </footer>
 
     <script>
-        // --- JavaScript for Notes Display ---
-        function showNotes(id) {
-            var noteContents = document.querySelectorAll('.note-content');
-            noteContents.forEach(function(content) {
-                // If it's the clicked note, toggle its display
-                if (content.id === id) {
-                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
-                } else {
-                    // Otherwise, hide any other open notes
-                    content.style.display = 'none';
-                }
+        // --- Notes Section JavaScript ---
+        function showNotes(subjectId) {
+            // Hide all note contents first
+            document.querySelectorAll('.note-content').forEach(div => {
+                div.style.display = 'none';
             });
+            // Show the selected note content
+            const selectedNotes = document.getElementById(subjectId);
+            if (selectedNotes) {
+                selectedNotes.style.display = 'block';
+            }
         }
 
-        // --- JavaScript for Quiz Logic with Timer ---
-        const allSubjectQuizContainers = document.querySelectorAll('.subject-quiz-container');
-        const quizSubmitButton = document.getElementById('quiz-submit-button');
-        const quizResultsDiv = document.getElementById('quiz-results');
-        const quizTimerContainer = document.getElementById('quiz-timer');
-        const timerDisplay = document.getElementById('timer-display');
-        const bestTimeTakenDisplay = document.getElementById('best-time-taken');
-        const tryAgainButton = document.getElementById('try-again-button'); // New button
-
-        let activeQuizSubject = null;
-        let timerInterval;
-        let startTime;
-        let bestTimes = {}; // Stores best times for each quiz subject
-
-        // Define correct answers by subject and question name
-        const allAnswers = {
-            'math-quiz': {
-                'math_q1': 'b', // Ten Thousands
-                'math_q2': 'b'  // 45%
-            },
-            'science-quiz': {
-                'science_q1': 'd', // Algae
-                'science_q2': 'c'  // All other bulbs in the circuit will go out.
-            },
-            'malay-quiz': { // Added Malay answers (SJKC specific)
-                'malay_q1': 'a', // Ali sedang membaca buku.
-                'malay_q2': 'a'  // me-
-            },
-            'tamil-quiz': {
-                'tamil_q1': 'b', // 12 (உயிர் எழுத்துகள்)
-                'tamil_q2': 'b'  // Thank you (நன்றி)
-            },
-            'history-quiz': {
-                'history_q1': 'b', // Parameswara (பரமேஸ்வரா)
-                'history_q2': 'c'  // Langkasuka (லங்காசுகா)
-            },
-            'english-quiz': {
-                'english_q1': 'c', // And
-                'english_q2': 'c'  // Topic sentence
-            }
+        // --- Quiz Section JavaScript ---
+        const quizAnswers = {
+            'math_q1': 'b',
+            'math_q2': 'b',
+            'science_q1': 'd',
+            'science_q2': 'c',
+            'malay_q1': 'a',
+            'malay_q2': 'a',
+            'tamil_q1': 'b',
+            'tamil_q2': 'b',
+            'history_q1': 'a',
+            'history_q2': 'b',
+            'english_q1': 'b',
+            'english_q2': 'c'
         };
 
+        let timerInterval;
+        let startTime;
+        let bestTime = localStorage.getItem('bestQuizTime'); // Load best time from local storage
 
-        // Load best times from local storage when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            loadBestTimes();
-            // Optional: Initially hide all quiz containers if no subject is pre-selected
-            allSubjectQuizContainers.forEach(container => {
-                container.style.display = 'none';
-            });
-        });
+        const timerDisplay = document.getElementById('timer-display');
+        const bestTimeTakenElement = document.getElementById('best-time-taken');
+        const quizTimerContainer = document.getElementById('quiz-timer');
+        const quizSubjectContainers = document.querySelectorAll('.subject-quiz-container');
+        const quizForm = document.getElementById('quiz-form');
+        const quizSubmitButton = document.getElementById('quiz-submit-button');
+        const quizResultsDiv = document.getElementById('quiz-results');
+        const tryAgainBtn = document.getElementById('try-again-button');
+        const quizIntroText = document.querySelector('.quiz-intro-text');
+        const quizSubjectSelection = document.querySelector('.quiz-subject-selection');
 
-        function loadBestTimes() {
-            try {
-                const storedBestTimes = localStorage.getItem('quizBestTimes');
-                if (storedBestTimes) {
-                    bestTimes = JSON.parse(storedBestTimes);
-                    console.log('Loaded best times:', bestTimes); // Debugging: See what's loaded
-                } else {
-                    console.log('No best times found in local storage.');
-                }
-            } catch (e) {
-                console.error("Error loading best times from local storage:", e);
-                bestTimes = {}; // Reset to empty object if storage is corrupted
-            }
-        }
-
-        function saveBestTimes() {
-            try {
-                localStorage.setItem('quizBestTimes', JSON.stringify(bestTimes));
-                console.log('Saved best times:', bestTimes); // Debugging: See what's saved
-            } catch (e) {
-                console.error("Error saving best times to local storage:", e);
-            }
-        }
-
-        function formatTime(milliseconds) {
-            if (typeof milliseconds !== 'number' || isNaN(milliseconds)) {
-                console.warn('formatTime received non-numeric value:', milliseconds);
-                return 'N/A'; // Return N/A for invalid input
-            }
-            const totalSeconds = Math.floor(milliseconds / 1000);
+        function formatTime(ms) {
+            const totalSeconds = Math.floor(ms / 1000);
             const minutes = Math.floor(totalSeconds / 60);
             const seconds = totalSeconds % 60;
-            const ms = milliseconds % 1000; // Milliseconds for more precision
-
-            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(ms).padStart(3, '0')}`;
+            const milliseconds = ms % 1000;
+            return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(3, '0')}`;
         }
 
         function startTimer() {
-            clearInterval(timerInterval); // Clear any existing timer
-            startTime = Date.now(); // Record the start time
-            quizTimerContainer.classList.add('active'); // Show the timer container
-            timerDisplay.textContent = '00:00.000'; // Reset timer display
-
-            timerInterval = setInterval(() => {
-                const elapsedTime = Date.now() - startTime;
-                updateTimerDisplay(elapsedTime);
-            }, 10); // Update every 10 milliseconds for smoother display
+            startTime = Date.now();
+            timerInterval = setInterval(updateTimer, 10); // Update every 10ms for milliseconds display
+            quizTimerContainer.classList.add('active'); // Show timer
         }
 
         function stopTimer() {
             clearInterval(timerInterval);
+            quizTimerContainer.classList.remove('active'); // Hide timer
+        }
+
+        function updateTimer() {
             const elapsedTime = Date.now() - startTime;
-            return elapsedTime;
+            timerDisplay.textContent = formatTime(elapsedTime);
         }
 
-        function updateTimerDisplay(milliseconds) {
-            timerDisplay.textContent = formatTime(milliseconds);
-        }
-
-        function displayBestTime(subjectId) {
-            const bestTime = bestTimes[subjectId];
-            console.log(`Displaying best time for ${subjectId}:`, bestTime); // Debugging: What's the value?
-            if (bestTime !== null && bestTime !== undefined) {
-                bestTimeTakenDisplay.textContent = `Your Best Time: ${formatTime(bestTime)}`;
+        function showBestTime() {
+            if (bestTime) {
+                bestTimeTakenElement.textContent = `Best Time: ${formatTime(parseInt(bestTime, 10))}`;
+                bestTimeTakenElement.style.display = 'block';
             } else {
-                bestTimeTakenDisplay.textContent = 'Your Best Time: N/A';
+                bestTimeTakenElement.style.display = 'none';
             }
         }
 
         function showQuizSubject(subjectId) {
-            // Hide all quiz containers first
-            allSubjectQuizContainers.forEach(container => {
+            // Hide all quiz containers
+            quizSubjectContainers.forEach(container => {
                 container.style.display = 'none';
             });
-
-            // Hide results and try again button
-            quizResultsDiv.innerHTML = '';
-            tryAgainButton.style.display = 'none';
-
             // Show the selected quiz container
-            const selectedContainer = document.getElementById(subjectId);
-            if (selectedContainer) {
-                selectedContainer.style.display = 'block';
-                activeQuizSubject = subjectId; // Set the active subject
-                quizSubmitButton.style.display = 'block'; // Show submit button
+            document.getElementById(subjectId).style.display = 'block';
+            quizSubmitButton.style.display = 'block'; // Show submit button for the active quiz
+            quizIntroText.style.display = 'none';
+            quizSubjectSelection.style.display = 'none';
+            quizResultsDiv.style.display = 'none';
+            tryAgainBtn.style.display = 'none'; // Hide try again button
 
-                resetQuizForm(); // Clear selected radio buttons for the new quiz
-
-                // Start timer and display best time for the selected quiz
-                startTimer();
-                displayBestTime(subjectId); // Call this after activeQuizSubject is set
-            }
+            startTimer(); // Start the timer when a quiz begins
         }
 
-        // Function to reset all radio button selections
-        function resetQuizForm() {
-            const radioButtons = document.querySelectorAll('#quiz-form input[type="radio"]');
-            radioButtons.forEach(radio => {
-                radio.checked = false;
-            });
-        }
+        quizForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
 
-        // Quiz Submission Logic
-        document.getElementById('quiz-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from reloading the page
-
-            if (!activeQuizSubject) {
-                quizResultsDiv.innerHTML = '<p style="color:red;">Please select a subject quiz first!</p>';
-                return;
-            }
-
-            const timeTaken = stopTimer(); // Stop the timer and get elapsed time
-            quizTimerContainer.classList.remove('active'); // Hide timer during results display, optional
+            stopTimer(); // Stop the timer when quiz is submitted
+            const finalTime = Date.now() - startTime;
 
             let score = 0;
-            let answeredQuestions = 0;
-            const currentSubjectAnswers = allAnswers[activeQuizSubject]; // Get answers for the active quiz
+            const currentQuizId = quizForm.querySelector('.subject-quiz-container[style*="display: block"]')?.id;
 
-            quizResultsDiv.innerHTML = ''; // Clear previous results
+            if (currentQuizId) {
+                const quizQuestions = document.querySelectorAll(`#${currentQuizId} .quiz-question`);
+                quizQuestions.forEach(questionDiv => {
+                    const questionName = questionDiv.querySelector('input[type="radio"]').name;
+                    const selectedOption = quizForm.querySelector(`input[name="${questionName}"]:checked`);
 
-            // Display current time taken
-            const currentTimeElement = document.createElement('p');
-            currentTimeElement.id = 'current-time-taken-result'; // Unique ID for result display
-            currentTimeElement.textContent = `Time taken for this attempt: ${formatTime(timeTaken)}`;
-            quizResultsDiv.appendChild(currentTimeElement);
-
-            // Update best time if current time is faster
-            if (bestTimes[activeQuizSubject] === null || bestTimes[activeQuizSubject] === undefined || timeTaken < bestTimes[activeQuizSubject]) {
-                bestTimes[activeQuizSubject] = timeTaken; // This assigns the numerical time
-                saveBestTimes(); // This saves it
-                const newBestTimeMessage = document.createElement('p');
-                newBestTimeMessage.textContent = `🎉 New Best Time for this quiz!`;
-                newBestTimeMessage.style.color = '#4CAF50'; // Green for new best
-                newBestTimeMessage.style.fontWeight = 'bold';
-                quizResultsDiv.appendChild(newBestTimeMessage);
-            }
-            // Display the best time in the results area too
-            const resultBestTimeElement = document.createElement('p');
-            resultBestTimeElement.textContent = `Overall Best Time: ${formatTime(bestTimes[activeQuizSubject])}`;
-            resultBestTimeElement.style.color = '#2196F3'; // Blue
-            resultBestTimeElement.style.fontWeight = 'bold';
-            quizResultsDiv.appendChild(resultBestTimeElement);
-
-
-            // Score the quiz questions
-            for (const qName in currentSubjectAnswers) {
-                const selectedAnswer = document.querySelector(`input[name="${qName}"]:checked`);
-                const questionResultElement = document.createElement('p');
-
-                if (selectedAnswer) {
-                    answeredQuestions++;
-                    if (selectedAnswer.value === currentSubjectAnswers[qName]) {
+                    if (selectedOption && selectedOption.value === quizAnswers[questionName]) {
                         score++;
-                        questionResultElement.textContent = `Question ${qName.split('_')[1].toUpperCase()}: Correct!✅️️`;
-                        questionResultElement.style.color = '#2e7d32';
-                    } else {
-                        questionResultElement.textContent = `Question ${qName.split('_')[1].toUpperCase()}: Incorrect❌️. The correct answer was "${currentSubjectAnswers[qName].toUpperCase()}".`;
-                        questionResultElement.style.color = '#d32f2f';
                     }
-                } else {
-                    questionResultElement.textContent = `Question ${qName.split('_')[1].toUpperCase()}: Not answered.`;
-                    questionResultElement.style.color = '#757575';
-                }
-                quizResultsDiv.appendChild(questionResultElement);
+                });
             }
 
-            const totalQuestions = Object.keys(currentSubjectAnswers).length;
-
-            const finalScoreElement = document.createElement('h3');
-            finalScoreElement.textContent = `Your score: ${score} out of ${totalQuestions}`;
-            quizResultsDiv.appendChild(finalScoreElement);
-
-            if (answeredQuestions < totalQuestions) {
-                const warning = document.createElement('p');
-                warning.textContent = 'You did not answer all questions.';
-                warning.style.color = '#f57f17';
-                quizResultsDiv.appendChild(warning);
+            // Update best time
+            if (!bestTime || finalTime < parseInt(bestTime, 10)) {
+                bestTime = finalTime;
+                localStorage.setItem('bestQuizTime', bestTime);
             }
 
-            // Show the "Try Again" button after results are displayed
-            tryAgainButton.style.display = 'block';
+            document.getElementById('current-score').textContent = score;
+            document.getElementById('total-questions').textContent = quizForm.querySelectorAll('.quiz-question').length;
+            document.getElementById('final-time-taken').textContent = formatTime(finalTime);
+
+            const gradeMessageElement = document.getElementById('grade-message');
+            const totalQs = quizForm.querySelectorAll('.quiz-question').length;
+            const percentage = (score / totalQs) * 100;
+
+            if (percentage === 100) {
+                gradeMessageElement.textContent = "Excellent! Perfect score!";
+                gradeMessageElement.style.color = 'green';
+            } else if (percentage >= 70) {
+                gradeMessageElement.textContent = "Good job! Keep practicing!";
+                gradeMessageElement.style.color = 'orange';
+            } else {
+                gradeMessageElement.textContent = "You can do better! Keep studying and try again.";
+                gradeMessageElement.style.color = 'red';
+            }
+
+            // Hide quiz, show results
+            quizSubjectContainers.forEach(container => { container.style.display = 'none'; });
+            quizSubmitButton.style.display = 'none';
+            quizResultsDiv.style.display = 'block';
+            tryAgainBtn.style.display = 'block';
+            showBestTime(); // Update and show best time in results
         });
 
-        // Event Listener for the new "Try Again" button
-        tryAgainButton.addEventListener('click', () => {
-            if (activeQuizSubject) {
-                showQuizSubject(activeQuizSubject); // Re-show the active quiz, which resets it
-            }
+        tryAgainBtn.addEventListener('click', function() {
+            quizResultsDiv.style.display = 'none';
+            quizIntroText.style.display = 'block';
+            quizSubjectSelection.style.display = 'block';
+            timerDisplay.textContent = '00:00.000'; // Reset timer display
+            // Clear all radio button selections
+            quizForm.reset();
+            showBestTime(); // Ensure best time is visible if applicable
+        });
+
+        // --- Intersection Observer for Scroll Animations ---
+        const sections = document.querySelectorAll('section');
+
+        const observerOptions = {
+            root: null, // Use the viewport as the root
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        // Initial setup for the quiz section and observing sections
+        document.addEventListener('DOMContentLoaded', () => {
+            quizIntroText.style.display = 'block';
+            quizSubjectSelection.style.display = 'block';
+            quizResultsDiv.style.display = 'none';
+            tryAgainBtn.style.display = 'none';
+            showBestTime(); // Display best time on load
+
+            // Observe each section for scroll animation
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
         });
     </script>
 </body>
